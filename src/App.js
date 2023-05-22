@@ -1,21 +1,19 @@
 import "./App.css";
-import { useReducer} from "react";
+import { useRef} from "react";
 
 function App() {
-  const [currentStatus,newStatus] = useReducer(newStatus(currentStatus => !currentStatus),(false))
- 
   return (
     <div className="App">
-      <input
-        type="checkbox"
-        value={currentStatus}
-        onChange={newStatus}
-        
-      />
-      <label>{ currentStatus ? 'Agreed to terms and Condtition' : 'Click to agree to terms and Conditions'}
-      </label>
+      <h1>A color Picker</h1>
+      <form action="">
+        <input type="text" placeholder="name of color" />
+        <input type="color" />
+        <button type="submit">Add</button>
+      </form>
     </div>
   );
+  
+    
 }
 
 export default App;
