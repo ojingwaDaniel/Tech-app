@@ -1,16 +1,15 @@
 import "./App.css";
-import { useRef} from "react";
+import { useState} from "react";
 
 function App() {
-  const colorName = useRef();
-  const hexColor = useRef();
+  const [name,setName] = useState('')
+  const [color,hexColor] = useState('#00000')
   const submit = e => {
     e.preventDefault()
-    let name = colorName.current.value
-    let  color = hexColor.current.value
     alert(`${name} , ${color}`)
-    colorName.current.value = ''
-    hexColor.current.value = ''
+    setName("")
+    hexColor("#00000000")
+    
   }
   
   
@@ -18,8 +17,12 @@ function App() {
     <div className="App">
       <h1>A color Picker</h1>
       <form onSubmit={submit}>
-        <input type="text" placeholder="name of color"  ref={colorName}/>
-        <input type="color"  ref={hexColor}/>
+        <input
+          type="text"
+          placeholder="name of color"
+          onChange={event => setName(event.target.value)}
+        />
+        <input type="color" onChange={event=> hexColor(event.target.value)} />
         <button type="submit">Add</button>
       </form>
     </div>
