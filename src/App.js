@@ -1,16 +1,31 @@
 import "./App.css";
 import { useState,useEffect} from "react";
-// function useInput(initialValue){
-//   const [value , setValue] = useState(initialValue)
+// function App(){
+//   const [data,setData] = useState(null)
+//   useEffect(()=>{
+//     fetch(`https://api.github.com/users/ojingwaDaniel`)
+//     .then(response=> response.json())
+//     .then(setData)
+//   },[])
+//   if (data)
 //   return(
-//     [
-//     {value,onChange: e => setValue(e.target.value)},
-//     ()=> setValue(initialValue)
-//     ]
-//   )
-// }
-
-function App() {
+//    <pre>{JSON.stringify(data,null,2)}</pre>
+//    )
+//   return(
+//     <div className= 'App'>
+//       <h1>Data</h1>
+//     </div>
+//   )}
+function useInput(initialValue){
+  const [value , setValue] = useState(initialValue)
+  return(
+    [
+    {value,onChange: e => setValue(e.target.value)},
+    ()=> setValue(initialValue)
+    ]
+  )
+}
+  function App() {
   const [colorTitle,resetTitle] = useInput("")
   const [hexColor,resetColor] = useInput("#00000")
   const submit = e => {
@@ -33,22 +48,5 @@ function App() {
       </form>
     </div>
   );
-  
-function App(){
-  const [data,setData] = useState(null)
-  useEffect(()=>{
-    fetch(`https://api.github.com/users/ojingwaDaniel`)
-    .then(response=> response.json())
-    .then(setData)
-  },[])
-  if (data)
-  return(
-   <pre>{JSON.stringify(data,null,2)}</pre>
-   )
-  return(
-    <div className= 'App'>
-      <h1>Data</h1>
-    </div>
-  )
 }
 export default App;
