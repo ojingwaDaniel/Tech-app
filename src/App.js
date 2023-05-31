@@ -46,12 +46,19 @@ function WebUser({name,location,biography}){
 }
 function App(){
   const [data,setData] = useState(null)
+  const [error,setError] = useState(null)
+  const [loading,setLoading] = useState(false);
   useEffect(()=>{
+    setLoading(true)
     fetch(`https://api.github.com/users/ojingwaDaniel`)
     .then(response=> response.json())
     .then(setData)
+    .then(()=>setLoading(false))
+    .catch(setError)
   },[])
-  if (data)
+  if(loading) return <h1>Loading</h1>
+  if(error) <pre>{JSON.stringify(error)}</pre>
+  if(!data) return null
   return (
     <WebUser
       name={data.name}
@@ -61,9 +68,7 @@ function App(){
 
     />
   );
-  return(
-    <div className= 'App'>
-      <h1>Data</h1>
-    </div>
-  )}
+}
+
+
 export default App;
