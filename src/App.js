@@ -34,13 +34,23 @@ import { useState,useEffect} from "react";
 //     </div>
 //   );
 // }
-function WebUser({name,location,biography}){
+const query = `query{
+  allLifts{
+    name
+    elevationGain
+    status
+  }
+}`;
+const opt = {
+  method : 'POST',
+  headers : {'Content-Type' : 'application/json'},
+  body : JSON.stringify({query})
+}
+function Lift ({name,elevationGain,status}){
   return (
     <div>
       <h1>{name}</h1>
-      <p>{location}</p>
-      <img src="https://avatars.githubusercontent.com/u/79636701?v=4" alt="name"  height={150}/>
-      <p>{biography}</p>
+      <p>{elevationGain} {status}</p>
     </div>
   );
 }
@@ -50,23 +60,23 @@ function App(){
   const [loading,setLoading] = useState(false);
   useEffect(()=>{
     setLoading(true)
-    fetch(`https://api.github.com/users/ojingwaDaniel`)
-    .then(response=> response.json())
-    .then(setData)
-    .then(()=>setLoading(false))
-    .catch(setError)
+    fetch(`https://snowtooth.moonhighway.com/`,opt)
+      .then((response) => response.json())
+      .then(setData)
+      .then(() => setLoading(false))
+      .catch(setError);
   },[])
-  if(loading) return <h1>Loading</h1>
+  if(loading) return <h1>Loading........</h1>
   if(error) <pre>{JSON.stringify(error)}</pre>
   if(!data) return null
   return (
-    <WebUser
-      name={data.name}
-      location={data.location}
-      avater={data.avatar_url}
-      biography = {data.bio}
-
-    />
+   <div>
+    {data.data.allLifts.map((lift)=> 
+    <Lift name = {lift.name} 
+    elevationGain ={lift.elevationGain}
+     status = {lift.status}
+     />)}
+   </div>
   );
 }
 
