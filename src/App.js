@@ -34,12 +34,13 @@ import { useState,useEffect} from "react";
 //     </div>
 //   );
 // }
-function WebUser({name,location,avater}){
+function WebUser({name,location,biography}){
   return (
     <div>
       <h1>{name}</h1>
       <p>{location}</p>
       <img src="https://avatars.githubusercontent.com/u/79636701?v=4" alt="name"  height={150}/>
+      <p>{biography}</p>
     </div>
   );
 }
@@ -56,6 +57,8 @@ function App(){
       name={data.name}
       location={data.location}
       avater={data.avatar_url}
+      biography = {data.bio}
+
     />
   );
   return(
