@@ -1,4 +1,5 @@
 import "./App.css";
+import { Link } from "react-router-dom";
 // import { useState,useEffect} from "react";
 
 // function useInput(initialValue){
@@ -79,37 +80,79 @@ import "./App.css";
 //    </div>
 //   );
 // }
-const studentData = [
-  { name: "Freel", elevation: 10891 },
-  { name: "Monument", elevation: 10067 },
-  { name: "Pyramid", elevation: 9983 },
-  { name: "Tallac", elevation: 9735 }
-];
-function StudentList({data,renderItem,renderEmpty}){
-  return !data.length ? renderEmpty :(
-    <ul>
-      {data.map(item=>(
-        <li key = {item.name}>{renderItem(item)}</li>
-      ))}
-    </ul>
-  )
-}
-function App(){
-   return(
-  <div className="App">
+// const studentData = [
+//   { name: "Freel", elevation: 10891 },
+//   { name: "Monument", elevation: 10067 },
+//   { name: "Pyramid", elevation: 9983 },
+//   { name: "Tallac", elevation: 9735 }
+// ];
+// function StudentList({data,renderItem,renderEmpty}){
+//   return !data.length ? renderEmpty :(
+//     <ul>
+//       {data.map(item=>(
+//         <li key = {item.name}>{renderItem(item)}</li>
+//       ))}
+//     </ul>
+//   )
+// }
+// function App(){
+//    return(
+//   <div className="App">
   
-    <StudentList
-     data = {studentData}
-     renderEmpty= {<p>this page is empty... </p>}
-     renderItem = {(item=>(
-      <>{item.name} - {item.elevation} .ft</>
-   ))}
+//     <StudentList
+//      data = {studentData}
+//      renderEmpty= {<p>this page is empty... </p>}
+//      renderItem = {(item=>(
+//       <>{item.name} - {item.elevation} .ft</>
+//    ))}
 
-     />
+//      />
 
-  </div>
-)
+//   </div>
+// )
 
+// }
+
+// export default App;
+export function Home() {
+  return (
+    <div>
+      <nav>
+        <Link to={"/contact"}>Contact</Link>
+        <Link to={"/about"}>About</Link>
+       
+      </nav>
+      <h1>My Website</h1>
+    </div>
+  );
 }
+export function Contact() {
+  return (
+    <div>
+      <nav>
+        <Link to={"/about"}>About</Link>
+        <Link to={"/"}>Home</Link>
+      </nav>
+      <h1>My COntact List</h1>
+    </div>
+  );
+}
+export function About() {
+  return (
+    <div>
+      <nav>
+        <Link to={"/contact"}>Contact</Link>
+        <Link to={"/"}>Home</Link>
+      </nav>
 
-export default App;
+      <h1>More About me</h1>
+    </div>
+  );
+}
+export function App() {
+  return (
+    <div>
+      <h1>My Application</h1>
+    </div>
+  );
+}
