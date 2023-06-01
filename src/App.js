@@ -1,5 +1,5 @@
 import "./App.css";
-import { Link } from "react-router-dom";
+import { Link,Outlet} from "react-router-dom";
 // import { useState,useEffect} from "react";
 
 // function useInput(initialValue){
@@ -146,8 +146,16 @@ export function About() {
       </nav>
 
       <h1>More About me</h1>
+      <Outlet/>
     </div>
   );
+}
+export function History(){
+  return(
+    <div>
+      <h1>Our Company History</h1>
+    </div>
+  )
 }
 export function App() {
   return (

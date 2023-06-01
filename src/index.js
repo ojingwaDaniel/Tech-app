@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter,Routes,Route } from 'react-router-dom';
-import {Home,Contact,About} from './App'
+import {Home,Contact,About,History} from './App'
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -12,7 +12,9 @@ root.render(
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/contact" element={<Contact />} />
-      <Route path="/about" element={<About />} />
+      <Route path="/about" element={<About />}>
+        <Route path='history' element= {<History/>}/>
+      </Route>
     </Routes>
   </BrowserRouter>
 );
