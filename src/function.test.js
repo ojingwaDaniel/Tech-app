@@ -1,4 +1,4 @@
-import { Mutiply } from "./function"
+import { Mutiply, MutiplyBy2 } from "./function"
 test('Mutiplies by two',()=>{
-    expect(Mutiply(4)).toBe(8)
+    expect(MutiplyBy2(4)).toBe(8)
 })

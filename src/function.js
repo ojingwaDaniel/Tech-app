@@ -1,5 +1,5 @@
 
-export function Mutiply(a){
+export function MutiplyBy2(a){
     return a * 2
 
 }
