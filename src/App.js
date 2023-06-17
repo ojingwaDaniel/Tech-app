@@ -29,10 +29,7 @@ import { Link,Outlet} from "react-router-dom";
 //           placeholder="name of color"
 //           {...colorTitle}
 //         />
-//         <input type="color" {...hexColor} />
-//         <button type="submit">Add</button>
-//       </form>
-//     </div>
+//         <input type="color" {..
 //   );
 // }
 // const query = `query{
